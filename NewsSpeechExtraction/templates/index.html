@@ -1,0 +1,42 @@
+<!doctype html>
+<title>NLP Project</title>
+<head>
+
+<script src="https://cdn.staticfile.org/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">NLP </a>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+  </div>
+</nav>
+<div class="content" style="height: 300px;margin-top:10px;width:95%;border-radius: 8px;box-shadow: 1px 1px 4px 1px rgba(0,0,0,0.37);margin-left:auto;margin-right:auto">
+    <div class="" style="width:50%;float:left;height: 100%;">
+	<textarea id="source" class="form-control" rows="1"  style="overflow-y: hidden; overflow-x: auto; box-sizing: border-box; height: 100%; direction: ltr; padding-bottom: 18px;width:100%;resize:none" placeholder="Please Input News Text" ></textarea>
+    </div>
+    <div class="" style="width:50%;float:left;height: 100%;">
+	<textarea id="result" class="form-control" rows="1"  style="overflow-y: hidden; overflow-x: auto; box-sizing: border-box; height:100%; direction: ltr; padding-bottom: 18px;width:100%;resize:none" placeholder="Extraction Result"></textarea>
+    </div>
+</div>
+<div style="margin-left:auto;margin-right:auto;margin-top:15px;width:75px">
+  <button type="button" id="extract" class="btn btn-primary" >Extract</button>
+</div>
+</body>
+<script>
+  $('#extract').click(function(){
+    var input = $('#source').val();
+    $.post('/getResult',{input:input},function(r){
+      $('#result').val(r);
+    });
+  });
+</script>
